@@ -5,7 +5,7 @@ CPU_USED=$(uptime | awk '{print $10}' | sed -e 's/,$//g')
 CPU_USED_PER=$(echo "100 * ${CPU_USED}" | bc | sed -e "s/.00$//g")
 
 ## メモリ利用率を%単位で表示
-MEM_USED=$(free -m | sed -n 2p | awk '{print $2}')
+MEM_USED=$(free -m | sed -n 2p | awk '{print $3}')
 MEM_USED_PER=$(echo "${MEM_USED} * 0.05" | bc)
 
 
