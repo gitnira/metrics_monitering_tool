@@ -1,7 +1,8 @@
 #!/bin/bash
 
 ## CPU利用率を%単位で表示
-CPU_USED_PER=$(cat /proc/loadavg | awk '{print $1}')
+CPU_USED=$(cat /proc/loadavg | awk '{print $1}')
+CPU_USED_PER=$(echo "100 * ${CPU_USED}" | bc | sed -e "s/.00$//g")
 
 ## メモリ利用率を%単位で表示
 MEM_USED=$(free -m | sed -n 2p | awk '{print $3}')
